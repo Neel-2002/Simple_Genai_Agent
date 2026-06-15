@@ -1,7 +1,6 @@
 import spacy
 from langchain_core.documents import Document
 
-# Load once (important for performance)
 nlp = spacy.load("en_core_web_sm", disable=["parser", "ner"])
 
 def normalize_text(text: str) -> str:
@@ -25,7 +24,7 @@ def normalize_documents(documents: list[Document]) -> list[Document]:
         normalized_docs.append(
             Document(
                 page_content=cleaned_text,
-                metadata=doc.metadata  # keep metadata intact
+                metadata=doc.metadata
             )
         )
     return normalized_docs
